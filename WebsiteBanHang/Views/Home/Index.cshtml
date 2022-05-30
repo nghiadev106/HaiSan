@@ -1,0 +1,386 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+
+    //Danh sách slides
+    var ListSlides = (List<WebsiteBanHang.Data.Slide>)ViewBag.ListSlides;
+
+    //Danh sách danh mục sản phẩm
+    var listCategories = (List<WebsiteBanHang.Data.Category>)ViewBag.ListCategories;
+
+    //Danh sách sản phẩm khuyến mại
+    var listProductsPromotion = (List<WebsiteBanHang.Data.Product>)ViewBag.ListProductsPromotion;
+
+    //Ds bó hải sản
+    var dsCa = (List<WebsiteBanHang.Data.Product>)ViewBag.DsCa;
+
+    //Ds giỏ hải sản
+    var dsTom = (List<WebsiteBanHang.Data.Product>)ViewBag.DsTom;
+
+    //Ds bình hải sản
+    var dsMuc = (List<WebsiteBanHang.Data.Product>)ViewBag.DsMuc;
+
+    //Ds hải sản chúc mừng
+    var dsOc = (List<WebsiteBanHang.Data.Product>)ViewBag.DsOc;
+
+    //Ds lan hồ điệp
+    var dsCua = (List<WebsiteBanHang.Data.Product>)ViewBag.DsCua;
+
+    //Ds hải sản chia buồn
+    var DsHoaChiaBuon = (List<WebsiteBanHang.Data.Product>)ViewBag.DsHoaChiaBuon;
+}
+
+<div id="banner">
+    <div class="wrapper">
+        <div class="banner_lf">
+            <div id="ctl00_cphContent_ucBanner_pnlNav" class="banner_nav">
+                <h2>
+                    Danh mục hải sản tươi
+                </h2>
+                <ul>
+                    @foreach (var item in listCategories)
+                    {
+                        <li>
+                            <strong>
+                                <a id="ctl00_cphContent_ucBanner_hplBouquets" title="hải sản tươi" href="/chuyen-muc/@item.Url/@item.Id">@item.Name</a>
+                            </strong>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="banner_rt">
+            <div class="banner">
+                <ul class="bxslider">
+                    @foreach(var item in ListSlides)
+                    {                 
+                    <li>
+                        <a title="@item.Name" href="@item.Link"><img alt="@item.Name" title="@item.Name" src="@item.Logo" style="border-width:0px;" /></a>
+                    </li>                  
+                    }
+                </ul>
+            </div>
+          
+        </div>
+    </div>
+</div>
+<div id="support_online">
+    <div class="wrapper">
+        <div class="support_data">
+            <div class="hotline">
+                <span class="t">
+                    Hotline đặt hải sản
+                </span> <span class="data">
+                    <strong>
+                        Hotline 1:
+                    </strong><a href="tel:0976551039" title="Gọi ngay cho điện hải sản Luân Uy">
+                        0976551039
+                    </a>
+                </span><span class="data">
+                    <strong>
+                        Hotline 2:
+                    </strong><a href="tel:0366709089" title="Gọi ngay cho điện hải sản Luân Uy">
+                        0366709089
+                    </a>
+                </span> <span class="data">&nbsp;</span><span class="d">
+                    Đặt hải sản qua điện thoại
+                </span>
+            </div>
+            <div class="payment">
+                <a id="ctl00_cphContent_ucPayment_hplPayment" title="Hướng dẫn thanh toán" href="huong-dan-thanh-toan.html"><img id="ctl00_cphContent_ucPayment_imgPayment" alt="Hướng dẫn thanh toán" title="Hướng dẫn thanh toán" src="~/images/img-payment.png" style="border-width:0px;" /></a>
+            </div>
+            <div class="filter">
+                <div class="t">
+                    Tư vấn chọn hải sản tươi
+                </div>
+                <div id="ctl00_cphContent_ucQuickSearch_pnlFilter" class="data" onkeypress="javascript:return WebForm_FireDefaultButton(event, &#39;ctl00_cphContent_ucQuickSearch_btnSearch&#39;)">
+                    <form asp-action="SearchAdvand" asp-controller="Products">
+                        <div class="f">
+                            <label>
+                                Danh mục
+                            </label>
+                            <select name="CategoryId">
+                                <option value="0">Tất cả</option>
+                                @foreach (var item in listCategories)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="f">
+                            <label>
+                                Mức giá
+                            </label>
+                            <select name="price">
+                                <option value="0">Tất cả</option>
+                                <option value="0-250000">Dưới 250.000đ</option>
+                                <option value="250000-350000">Gi&#225; từ 250.000đ - 350.000đ</option>
+                                <option value="350000-400000">Gi&#225; từ 350.000đ - 400.000đ</option>
+                                <option value="400000-500000">Gi&#225; từ 400.000đ - 500.000đ</option>
+                                <option value="500000-600000">Gi&#225; từ 500.000đ - 600.000đ</option>
+                                <option value="600000-800000">Gi&#225; từ 600.000đ - 800.000đ</option>
+                                <option value="800000-1000000">Gi&#225; từ 800.000đ - 1.000.000đ</option>
+                                <option value="1000000-0">Gi&#225; tr&#234;n 1.000.000đ</option>
+                            </select>
+                        </div>
+                        <div class="f">
+                            <input type="submit" value="Tìm" />
+                        </div>
+                    </form>
+                    <div class="d">
+                        *
+                        Bạn có thể gọi nhanh cho chúng tôi theo số <span>1800 6353</span> để đặt hải sản 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="wrapper">
+        <div class="lf">
+            @if (listProductsPromotion.Count() > 0)
+            {
+                <div class="data_items promotion">
+                    <h2>
+                        <a id="ctl00_cphContent_hplPromotion" title="Khuyến mãi" href="#">Khuyến mãi</a>
+                    </h2>
+                    <div class="items">
+                        @foreach (var item in listProductsPromotion)
+                        {
+                            <div class="item">
+                                <div class="i">
+                                    <a title="@item.Name" href="/san-pham/@item.Url/@item.Id"><img id="ctl00_cphContent_ucPromotions_rptItems_ctl01_imgItem" class="lazy" data-original="@item.Logo" alt="@item.Name" title="@item.Name" width="150" height="180" src="@item.Logo" style="border-width:0px;" /></a>
+                                </div>
+                                <div class="t">
+                                    <span>
+                                        <a title="@item.Name" href="/san-pham/@item.Url/@item.Id">@item.Name</a>
+                                    </span>
+                                    @if (item.PriceDiscount > 0)
+                                    {
+                                        <span id="ctl00_cphContent_ucPromotions_rptItems_ctl01_lblVNPrice" class="vn"><em class='oprice'>@Convert.ToDecimal(item.Price).ToString("N0") đ</em><em>@Convert.ToDecimal(item.PriceDiscount).ToString("N0") đ</em></span>
+                                    }
+                                    else
+                                    {
+                                        <span id="ctl00_cphContent_ucPromotions_rptItems_ctl01_lblVNPrice" class="vn"><em>@Convert.ToDecimal(item.Price).ToString("N0") đ</em></span>
+
+                                    }
+                                </div>
+                                <span class="ibadge isale">Sale</span>
+                                @if (item.IsNew == true)
+                                {
+                                    <span class="ibadge inew"></span>
+                                }
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+            }
+            @if (dsCa.Count() > 0)
+            {
+
+                <div class="data_items express">
+                    <h2>
+                        <a id="ctl00_cphContent_hplExpress" title="cá" href="/chuyen-muc/ca-tuoi/34">Cá tươi</a>
+                    </h2>
+                    <div class="items">
+                        @foreach (var item in dsCa)
+                        {
+                            <div class="item">
+                                <div class="i">
+                                    <a id="ctl00_cphContent_ucExpress_rptItems_ctl02_hplImage" title="@item.Name" href="/san-pham/@item.Url/@item.Id"><img id="ctl00_cphContent_ucExpress_rptItems_ctl02_imgItem" class="lazy" data-original="@item.Logo" alt="@item.Name" title="Bình Hồng Jumilia 30" width="150" height="180" src="@item.Logo" style="border-width:0px;" /></a>
+                                </div>
+                                <div class="t">
+                                    <span>
+                                        <a id="ctl00_cphContent_ucExpress_rptItems_ctl02_hplTitle" title="@item.Name" href="@item.Url">@item.Name</a>
+                                    </span>
+                                    @if (item.PriceDiscount > 0)
+                                    {
+                                        <span id="ctl00_cphContent_ucPromotions_rptItems_ctl01_lblVNPrice" class="vn"><em class='oprice'>@Convert.ToDecimal(item.Price).ToString("N0") đ</em><em>@Convert.ToDecimal(item.PriceDiscount).ToString("N0") đ</em></span>
+                                    }
+                                    else
+                                    {
+                                        <span id="ctl00_cphContent_ucPromotions_rptItems_ctl01_lblVNPrice" class="vn"><em>@Convert.ToDecimal(item.Price).ToString("N0") đ</em></span>
+
+                                    }
+                                </div>
+                                @if (item.PriceDiscount != null)
+                                {
+                                    <span id="ctl00_cphContent_ucExpress_rptItems_ctl02_lblSale" class="ibadge isale">Sale</span>
+                                }
+                                @if (item.IsNew == true)
+                                {
+                                    <span class="ibadge inew"></span>
+                                }
+                            </div>
+
+                        }
+
+
+                    </div>
+                </div>
+            }
+            @if (dsTom.Count() > 0)
+            {
+
+                <div class="data_items padding_top_20">
+                    <h2>
+                        <a id="ctl00_cphContent_hplBouquets" title="Tôm tươi" href="/chuyen-muc/tom-tuoi/35">Tôm tươi</a>
+                    </h2>
+                    <div class="items">
+                        @foreach (var item in dsTom)
+                        {
+                            <div class="item">
+                                <div class="i">
+                                    <a id="ctl00_cphContent_ucBouquets_rptItems_ctl04_hplImage" title="@item.Name" href="/san-pham/@item.Url/@item.Id"><img id="ctl00_cphContent_ucBouquets_rptItems_ctl04_imgItem" class="lazy" data-original="@item.Logo" alt="@item.Name" title="@item.Name" width="150" height="180" src="@item.Logo" style="border-width:0px;" /></a>
+                                </div>
+                                <div class="t">
+                                    <span>
+                                        <a id="ctl00_cphContent_ucBouquets_rptItems_ctl04_hplTitle" title="@item.Name" href="/san-pham/@item.Url/@item.Id">@item.Name</a>
+                                    </span>
+                                    @if (item.PriceDiscount > 0)
+                                    {
+                                        <span id="ctl00_cphContent_ucPromotions_rptItems_ctl01_lblVNPrice" class="vn"><em class='oprice'>@Convert.ToDecimal(item.Price).ToString("N0") đ</em><em>@Convert.ToDecimal(item.PriceDiscount).ToString("N0") đ</em></span>
+                                    }
+                                    else
+                                    {
+                                        <span id="ctl00_cphContent_ucPromotions_rptItems_ctl01_lblVNPrice" class="vn"><em>@Convert.ToDecimal(item.Price).ToString("N0") đ</em></span>
+
+                                    }
+                                </div>
+                                @if (item.PriceDiscount != null)
+                                {
+                                    <span id="ctl00_cphContent_ucBouquets_rptItems_ctl04_lblSale" class="ibadge isale">Sale</span>
+                                }
+                                @if (item.IsNew == true)
+                                {
+                                    <span class="ibadge inew"></span>
+                                }
+                            </div>
+
+                        }
+
+
+                    </div>
+                </div>
+            }
+
+            @if (dsMuc.Count() > 0)
+            {
+
+                <div class="data_items">
+                    <h2>
+                        <a id="ctl00_cphContent_hplBaskets" title="Mực sản tươi" href="/chuyen-muc/muc-tuoi/36">Mực tươi</a>
+                    </h2>
+                    <div class="items">
+                        @foreach (var item in dsMuc)
+                        {
+                            <div class="item">
+                                <div class="i">
+                                    <a id="ctl00_cphContent_ucBouquets_rptItems_ctl04_hplImage" title="@item.Name" href="/san-pham/@item.Url/@item.Id"><img id="ctl00_cphContent_ucBouquets_rptItems_ctl04_imgItem" class="lazy" data-original="@item.Logo" alt="@item.Name" title="@item.Name" width="150" height="180" src="@item.Logo" style="border-width:0px;" /></a>
+                                </div>
+                                <div class="t">
+                                    <span>
+                                        <a id="ctl00_cphContent_ucBouquets_rptItems_ctl04_hplTitle" title="@item.Name" href="/san-pham/@item.Url/@item.Id">@item.Name</a>
+                                    </span>
+                                    @if (item.PriceDiscount > 0)
+                                    {
+                                        <span id="ctl00_cphContent_ucPromotions_rptItems_ctl01_lblVNPrice" class="vn"><em class='oprice'>@Convert.ToDecimal(item.Price).ToString("N0") đ</em><em>@Convert.ToDecimal(item.PriceDiscount).ToString("N0") đ</em></span>
+                                    }
+                                    else
+                                    {
+                                        <span id="ctl00_cphContent_ucPromotions_rptItems_ctl01_lblVNPrice" class="vn"><em>@Convert.ToDecimal(item.Price).ToString("N0") đ</em></span>
+
+                                    }
+                                </div>
+                                @if (item.PriceDiscount != null)
+                                {
+                                    <span id="ctl00_cphContent_ucBouquets_rptItems_ctl04_lblSale" class="ibadge isale">Sale</span>
+                                }
+                                @if (item.IsNew == true)
+                                {
+                                    <span class="ibadge inew"></span>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+
+            @if (dsCua.Count() > 0)
+            {
+                <div class="data_items">
+                    <h2>
+                        <a id="ctl00_cphContent_hplBaskets" title="Cua ghẹ" href="/chuyen-muc/cua-ghe/38">Cua ghẹ</a>
+                    </h2>
+                    <div class="items">
+                        @foreach (var item in dsCua)
+                        {
+                            <div class="item">
+                                <div class="i">
+                                    <a id="ctl00_cphContent_ucBouquets_rptItems_ctl04_hplImage" title="@item.Name" href="/san-pham/@item.Url/@item.Id"><img id="ctl00_cphContent_ucBouquets_rptItems_ctl04_imgItem" class="lazy" data-original="@item.Logo" alt="@item.Name" title="@item.Name" width="150" height="180" src="@item.Logo" style="border-width:0px;" /></a>
+                                </div>
+                                <div class="t">
+                                    <span>
+                                        <a id="ctl00_cphContent_ucBouquets_rptItems_ctl04_hplTitle" title="@item.Name" href="/san-pham/@item.Url/@item.Id">@item.Name</a>
+                                    </span>
+                                    @if (item.PriceDiscount > 0)
+                                    {
+                                        <span id="ctl00_cphContent_ucPromotions_rptItems_ctl01_lblVNPrice" class="vn"><em class='oprice'>@Convert.ToDecimal(item.Price).ToString("N0") đ</em><em>@Convert.ToDecimal(item.PriceDiscount).ToString("N0") đ</em></span>
+                                    }
+                                    else
+                                    {
+                                        <span id="ctl00_cphContent_ucPromotions_rptItems_ctl01_lblVNPrice" class="vn"><em>@Convert.ToDecimal(item.Price).ToString("N0") đ</em></span>
+
+                                    }
+                                </div>
+                                @if (item.PriceDiscount != null)
+                                {
+                                    <span id="ctl00_cphContent_ucBouquets_rptItems_ctl04_lblSale" class="ibadge isale">Sale</span>
+                                }
+                                @if (item.IsNew == true)
+                                {
+                                    <span class="ibadge inew"></span>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+
+        </div>
+        <div class="rt">
+            <div class="t">
+                <div class="order">
+                    <a id="ctl00_cphContent_ucLargeOrder_hplLargeOrder" title="Đặt hải sản số lượng lớn" href="/lien-he"><img id="ctl00_cphContent_ucLargeOrder_imgLargeOrder" alt="Đặt hải sản số lượng lớn" title="Đặt hải sản số lượng lớn" src="~/images/dat-hải sản-so-luong-lon.png" style="border-width:0px;" /></a>
+                </div>
+                <div class="discount">
+                    <h4>
+                        Giảm 20.000đ
+                    </h4>
+                    <span>Nhằm khuyến khích mọi người quen sử dụng website trong việc giao dịch thương mại điện tử, Chúng tôi tặng cho mỗi đơn hàng 20.000đ nều bạn mua hải sản trực tiếp từ webiste.</span>
+                </div>
+                <div class="line">
+                </div>
+                <div class="satisfaction">
+                    <h4>
+                        100% Hài lòng
+                    </h4>
+                    <span>Với nhiều năm kinh nghiệm phục vụ trong ngành điện hải sản, chúng tôi hiểu mức độ quan trọng trong công việc của mình là truyền tải đúng và đủ thông điệp của người tặng đến người nhận. Vì thế chúng tôi cam kết 100% sự hài lòng của khách hàng với chúng dịch vụ của chúng tôi. Với bất cứ điều gì không hài lòng bạn đều được hoàn lại 100% phí dịch vụ đã chuyển cho chúng tôi.</span>
+                </div>
+            </div>
+            <div class="b">
+                <a id="ctl00_cphContent_ucContact_hplAbout" title="Giới thiệu" href="gioi-thieu.html">
+                    <div class="contact">
+                        <h4>
+                            Giới thiệu
+                        </h4>
+                        <span>Với sự đầu tư nghiêm túc, chúng tôi tập trung nâng cao trải nghiệm người dùng (UX) kể cả trên môi trường trực tuyến và ngoại tuyến để đem lại một dịch vụ hoàn hảo xứng đáng trong nỗ lực trở thành công ty điện hải sản số 1 tại Việt Nam.</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,199 @@
+﻿@model WebsiteBanHang.Models.OrderViewModel
+@section scripts{
+    <script src="~/js/cart.js"></script>
+}
+<style type="text/css">
+    .error-input {
+        color: red;
+        margin-left: 140px;
+    }
+
+    .frm div input[type=number] {
+        border: 1px solid #898989;
+        outline: none;
+        background-color: #fff;
+        font-size: 14px;
+        color: #898989;
+        padding: 4px 10px;
+        float: left;
+        clear: right;
+        width: 70%;
+    }
+</style>
+<div class="wrapper">
+    <div id="emty-cart" style="padding: 40px;display:none">
+        <div class="alert alert-danger" style="font-size: 18px;">
+            <strong style="font-size: 25px;">Không có sản phẩm nào trong giỏ hàng!</strong> Quay lại trang chủ để
+        </div></br>
+        <a style="font-size: 25px;color:green" class="btn btn-success" href="/">Tiếp tục mua hàng</a>
+    </div>
+</div>
+
+    <div id="cart-wrapper" class="wrapper">
+        <ul class="step" id="order_step">
+            <li class="first step_done_last step_done" step="1"><a id="ctl00_ctl00_cphContent_ucStep_hplStep1" href="https://hoayeuthuong.com/checkout/AdditionGifts.aspx?lang=vn"><em>01. </em>Giỏ hàng</a></li>
+            <li class="second step_current" step="2"><a id="ctl00_ctl00_cphContent_ucStep_hplStep2" href="javascript:void(0)"><em>02. </em>Đơn hàng</a></li>
+            <li id="step_end" class="last step_todo" step="3"><a id="ctl00_ctl00_cphContent_ucStep_hplStep3" href="javascript:void(0)"><em>03. </em>Thanh toán</a></li>
+        </ul>
+        <script type="text/javascript" language="javascript">
+            var step = {
+                1: { name: 'AdditionGifts' },
+                2: { name: 'OrderInfo' },
+                3: { name: 'PaymentInfo' }
+            };
+            $(document).ready(function () {
+                var url = window.location.href.toLowerCase();
+                var index = 0;
+                for (var i = 1; i <= 3; i++) {
+                    if (url.indexOf(step[i].name.toLowerCase()) > 0) {
+                        index = i;
+                        break;
+                    }
+                }
+                $('ul#order_step li').each(function () {
+                    var eStep = $(this).attr("step");
+                    if (eStep < index) {
+                        $(this).removeClass("step_todo");
+                        $(this).removeClass("step_current");
+                        $(this).addClass("step_done_last step_done");
+                    }
+                    else if (eStep == index) {
+                        $(this).removeClass("step_todo");
+                        $(this).removeClass("step_done_last step_done");
+                        $(this).addClass("step_current");
+                    }
+                    else {
+                        $(this).removeClass("step_current");
+                        $(this).removeClass("step_done_last step_done");
+                        $(this).addClass("step_todo");
+                    }
+                });
+            });
+        </script>
+        <div id="wp-cart">
+            <input type="hidden" name="ctl00$ctl00$cphContent$cphCheckout$hdfStep" id="ctl00_ctl00_cphContent_cphCheckout_hdfStep" value="">
+            <noscript>
+                <div style="display: inline;">
+                    <img height="1" width="1" style="border-style: none;" alt="" src="//www.googleadservices.com/pagead/conversion/1013069855/?label=Nc7sCP6q2VsQn_CI4wM&amp;guid=ON&amp;script=0" />
+                </div>
+            </noscript>
+           
+            <div class="check_box">               
+                <div class="lf">
+                    <div  class="frm">
+                        <h2>
+                            Thông tin người mua
+                        </h2>
+                        <div>
+                            <label>
+                                Lấy thông tin liên lạc từ:
+                            </label><a href="javascript:void(0);" class="fb" onclick="LoginFB()"> Facebook</a>&nbsp;|&nbsp;<a id="ctl00_ctl00_cphContent_cphCheckout_btnGoogle" class="g" href="javascript:__doPostBack(&#39;ctl00$ctl00$cphContent$cphCheckout$btnGoogle&#39;,&#39;&#39;)">Google</a>
+                        </div>
+                        <div>
+                            <form asp-action="Index" asp-controller="Cart" method="post">
+                                <div asp-validation-summary="ModelOnly" class="text-danger error-input"></div>
+                                <div>
+                                    <label for="">
+                                        <span class="req">*</span>Họ và tên:
+                                    </label>
+                                    <input asp-for="OrderName" type="text" maxlength="150">
+                                    <span asp-validation-for="OrderName" class="text-danger error-input"></span>
+                                </div>
+                                <div>
+                                    <label for="">
+                                        <span class="req">*</span>Điện thoại:
+                                    </label>
+                                    <input asp-for="OrderPhone" type="number" maxlength="12">
+                                    <span asp-validation-for="OrderPhone" class="text-danger error-input"></span>
+                                </div>
+                                <div>
+                                    <label for="">
+                                        Email của bạn:
+                                    </label>
+                                    <input asp-for="OrderEmail" type="text" maxlength="100">
+                                    <span asp-validation-for="OrderEmail" class="text-danger error-input"></span>
+                                </div>
+                                <div>
+                                    <label for="">
+                                        Địa chỉ:
+                                    </label>
+                                    <input asp-for="OrderAddress" type="text" maxlength="250">
+                                    <span asp-validation-for="OrderAddress" class="text-danger error-input"></span>
+
+                                </div>
+                                <div>
+                                    <label for="">
+                                        Ghi chú:
+                                    </label>
+                                    <textarea asp-for="OrderNote"></textarea>
+                                    <span asp-validation-for="OrderNote" class="text-danger error-input"></span>
+
+                                </div>
+                                <div class="button">
+                                    <input type="submit" name="" value="Thanh toán" id="" class="buy">
+                                </div>
+                            </form>
+                        </div>
+                          
+                    </div>
+                </div>
+                <div class="rt summary">
+                    <h1 class="title">
+                        Giỏ hàng (<span class="lbl_number_of_items"></span>)
+                    </h1>
+                    <div class="ListCart">
+
+                    </div>
+
+                    <div class="pr_dt">
+                        <div>
+                            <span>
+                                Tạm tính:
+                            </span>
+                            <span class="lbl_total"></span> đ
+                        </div>
+                        <div>
+                            <span>
+                                Phụ phí:
+                            </span>
+                            0 đ
+                        </div>
+                        <div class="fn">
+                            <span>
+                                Tổng cộng:
+                            </span>
+                            <span class="lbl_total"></span> đ
+                        </div>
+                        <div style="display: block;">
+                            <input name="ctl00$ctl00$cphContent$cphCheckout$ucCartDetail$txtVoucher" type="text" id="ctl00_ctl00_cphContent_cphCheckout_ucCartDetail_txtVoucher" class="voucher" placeholder="Voucher">
+                            <span id="ctl00_ctl00_cphContent_cphCheckout_ucCartDetail_lblError" class="error_info" style="width: 100%;border:none;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="ctl00_ctl00_cphContent_UpdateProgress1" style="display:none;" role="status" aria-hidden="true">
+            <div class="loading">
+                <div class="cssload-loader">
+                    <div class="cssload-dot"></div>
+                    <div class="cssload-dot"></div>
+                    <div class="cssload-dot"></div>
+                    <div class="cssload-dot"></div>
+                    <div class="cssload-dot"></div>
+                    <div class="cssload-dot"></div>
+                    <div class="cssload-dot"></div>
+                    <div class="cssload-dot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var prm = Sys.WebForms.PageRequestManager.getInstance();
+        prm.add_pageLoaded(LazyLoad);
+        function LazyLoad() {
+            $("img.lazy").lazyload()
+        }
+    </script>
+    <div class="line-b padding_top_20">
+    </div>
