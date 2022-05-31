@@ -188,7 +188,7 @@ namespace WebsiteBanHang.Services
                 int res = await _context.SaveChangesAsync();
                 return res;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return -1;
             }

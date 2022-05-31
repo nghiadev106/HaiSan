@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\nghia\\Net Core\\flower\\flower\\WebsiteBanHang\\WebsiteBanHang.csproj": {}
+    "D:\\DA\\HaiSan\\WebsiteBanHang\\WebsiteBanHang.csproj": {}
   },
   "projects": {
-    "D:\\nghia\\Net Core\\flower\\flower\\WebsiteBanHang\\WebsiteBanHang.csproj": {
+    "D:\\DA\\HaiSan\\WebsiteBanHang\\WebsiteBanHang.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\nghia\\Net Core\\flower\\flower\\WebsiteBanHang\\WebsiteBanHang.csproj",
+        "projectUniqueName": "D:\\DA\\HaiSan\\WebsiteBanHang\\WebsiteBanHang.csproj",
         "projectName": "WebsiteBanHang",
-        "projectPath": "D:\\nghia\\Net Core\\flower\\flower\\WebsiteBanHang\\WebsiteBanHang.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\nghia\\Net Core\\flower\\flower\\WebsiteBanHang\\obj\\",
+        "projectPath": "D:\\DA\\HaiSan\\WebsiteBanHang\\WebsiteBanHang.csproj",
+        "packagesPath": "C:\\Users\\DreamStore\\.nuget\\packages\\",
+        "outputPath": "D:\\DA\\HaiSan\\WebsiteBanHang\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DreamStore\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -96,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }

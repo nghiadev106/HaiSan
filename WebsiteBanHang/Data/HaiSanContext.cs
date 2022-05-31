@@ -244,10 +244,6 @@ namespace WebsiteBanHang.Data
             {
                 entity.Property(e => e.CreateDate).HasColumnType("datetime");
 
-                entity.Property(e => e.Description).HasColumnType("text");
-
-                entity.Property(e => e.Detail).HasColumnType("text");
-
                 entity.Property(e => e.EditDate).HasColumnType("datetime");
 
                 entity.Property(e => e.Logo).HasMaxLength(500);
