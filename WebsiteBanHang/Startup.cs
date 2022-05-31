@@ -103,6 +103,20 @@ namespace WebsiteBanHang
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+               name: "admin",
+               pattern: "admin", new
+               {
+                   area = "Admin",
+                   controller = "User",
+                   action = "Login"
+               });
+
+                endpoints.MapControllerRoute(
+                name: "areas",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+
+                endpoints.MapControllerRoute(
                 name: "Cart",
                 pattern: "gio-hang", new
                 {
@@ -133,39 +147,36 @@ namespace WebsiteBanHang
                  );
 
                 endpoints.MapControllerRoute(
+               name: "ProductCategories",
+               pattern: "loai-tin/{url}/{id}",
+               defaults: new { controller = "News", action = "Category" }
+               );
+
+                endpoints.MapControllerRoute(
+                  name: "ProductCategories",
+                  pattern: "tin-tuc",
+                  defaults: new { controller = "News", action = "Index" }
+                  );
+
+                endpoints.MapControllerRoute(
                 name: "Product Detail",
-                pattern: "blogs", new
+                pattern: "san-pham/{url}/{id}", new
                 {
-                    controller = "Blogs",
-                    action = "ListBlogs"
+                    controller = "Products",
+                    action = "DetailProduct"
                 });
 
                 endpoints.MapControllerRoute(
-                name: "Blog Detail",
-                pattern: "blog/{url}/{id}", new
-                {
-                    controller = "Blogs",
-                    action = "DetailBlog"
-                });
-
-
-                endpoints.MapControllerRoute(
-                 name: "Product Detail",
-                 pattern: "san-pham/{url}/{id}", new
+                 name: "News Detail",
+                 pattern: "tin-tuc/{url}/{id}", new
                  {
-                     controller = "Products",
-                     action = "DetailProduct"
+                     controller = "News",
+                     action = "Detail"
                  });
-
-                endpoints.MapControllerRoute(
-                name: "areas",
-                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                );
 
                 endpoints.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
-
 
                 endpoints.MapRazorPages();
             });

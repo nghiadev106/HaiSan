@@ -181,7 +181,7 @@
             @if (dsCa.Count() > 0)
             {
 
-                <div class="data_items express">
+                <div class="data_items" style="margin-top:30px;">
                     <h2>
                         <a id="ctl00_cphContent_hplExpress" title="cá" href="/chuyen-muc/ca-tuoi/34">Cá tươi</a>
                     </h2>
@@ -194,7 +194,7 @@
                                 </div>
                                 <div class="t">
                                     <span>
-                                        <a id="ctl00_cphContent_ucExpress_rptItems_ctl02_hplTitle" title="@item.Name" href="@item.Url">@item.Name</a>
+                                        <a id="ctl00_cphContent_ucExpress_rptItems_ctl02_hplTitle" title="@item.Name" href="/san-pham/@item.Url/@item.Id">@item.Name</a>
                                     </span>
                                     @if (item.PriceDiscount > 0)
                                     {
@@ -225,7 +225,7 @@
             @if (dsTom.Count() > 0)
             {
 
-                <div class="data_items padding_top_20">
+                <div class="data_items padding_top_20" style="margin-top:30px;">
                     <h2>
                         <a id="ctl00_cphContent_hplBouquets" title="Tôm tươi" href="/chuyen-muc/tom-tuoi/35">Tôm tươi</a>
                     </h2>
@@ -270,7 +270,7 @@
             @if (dsMuc.Count() > 0)
             {
 
-                <div class="data_items">
+                <div class="data_items" style="margin-top:30px;">
                     <h2>
                         <a id="ctl00_cphContent_hplBaskets" title="Mực sản tươi" href="/chuyen-muc/muc-tuoi/36">Mực tươi</a>
                     </h2>
@@ -311,7 +311,7 @@
 
             @if (dsCua.Count() > 0)
             {
-                <div class="data_items">
+                <div class="data_items" style="margin-top:30px;">
                     <h2>
                         <a id="ctl00_cphContent_hplBaskets" title="Cua ghẹ" href="/chuyen-muc/cua-ghe/38">Cua ghẹ</a>
                     </h2>
@@ -350,11 +350,52 @@
                 </div>
             }
 
+            @if (dsOc.Count() > 0)
+            {
+                <div class="data_items" style="margin-top:30px;">
+                    <h2>
+                        <a id="ctl00_cphContent_hplBaskets" title="Cua ghẹ" href="/chuyen-muc/cua-ghe/38">Ngao xò ốc</a>
+                    </h2>
+                    <div class="items">
+                        @foreach (var item in dsOc)
+                        {
+                            <div class="item">
+                                <div class="i">
+                                    <a id="ctl00_cphContent_ucBouquets_rptItems_ctl04_hplImage" title="@item.Name" href="/san-pham/@item.Url/@item.Id"><img id="ctl00_cphContent_ucBouquets_rptItems_ctl04_imgItem" class="lazy" data-original="@item.Logo" alt="@item.Name" title="@item.Name" width="150" height="180" src="@item.Logo" style="border-width:0px;" /></a>
+                                </div>
+                                <div class="t">
+                                    <span>
+                                        <a id="ctl00_cphContent_ucBouquets_rptItems_ctl04_hplTitle" title="@item.Name" href="/san-pham/@item.Url/@item.Id">@item.Name</a>
+                                    </span>
+                                    @if (item.PriceDiscount > 0)
+                                    {
+                                        <span id="ctl00_cphContent_ucPromotions_rptItems_ctl01_lblVNPrice" class="vn"><em class='oprice'>@Convert.ToDecimal(item.Price).ToString("N0") đ</em><em>@Convert.ToDecimal(item.PriceDiscount).ToString("N0") đ</em></span>
+                                    }
+                                    else
+                                    {
+                                        <span id="ctl00_cphContent_ucPromotions_rptItems_ctl01_lblVNPrice" class="vn"><em>@Convert.ToDecimal(item.Price).ToString("N0") đ</em></span>
+
+                                    }
+                                </div>
+                                @if (item.PriceDiscount != null)
+                                {
+                                    <span id="ctl00_cphContent_ucBouquets_rptItems_ctl04_lblSale" class="ibadge isale">Sale</span>
+                                }
+                                @if (item.IsNew == true)
+                                {
+                                    <span class="ibadge inew"></span>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+
         </div>
         <div class="rt">
             <div class="t">
                 <div class="order">
-                    <a id="ctl00_cphContent_ucLargeOrder_hplLargeOrder" title="Đặt hải sản số lượng lớn" href="/lien-he"><img id="ctl00_cphContent_ucLargeOrder_imgLargeOrder" alt="Đặt hải sản số lượng lớn" title="Đặt hải sản số lượng lớn" src="~/images/dat-hải sản-so-luong-lon.png" style="border-width:0px;" /></a>
+                    <a id="ctl00_cphContent_ucLargeOrder_hplLargeOrder" title="Đặt hải sản số lượng lớn" href="/lien-he">Đặt hải sản số lượng lớn</a>
                 </div>
                 <div class="discount">
                     <h4>

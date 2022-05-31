@@ -3,6 +3,7 @@
     ViewData["Title"] = "Danh mục sp";
 
     var ListProductCategories = (List<WebsiteBanHang.Data.Product>)ViewBag.ListProductCategories;
+    var categories = (List<WebsiteBanHang.Data.Category>)ViewBag.categories;
 }
 <div id="content">
     <div class="wrapper">
@@ -15,7 +16,7 @@
                 </li>
                 <li>
                     <h2>
-                        <a id="" title="Hoa đặc biệt" href="/chuyen-muc/@Model.Url/@Model.Id">@Model.Name</a>
+                        <a id="" title="Hải sản đặc biệt" href="/chuyen-muc/@Model.Url/@Model.Id">@Model.Name</a>
                     </h2>
                 </li>
             </ul>
@@ -47,11 +48,11 @@
                         {
                             <div class="item">
                                 <div class="i">
-                                    <a  title="Hoa cao cấp - @item.Name" href="/hoa/@item.Url/@item.Id"><img class="lazy" data-original="@item.Logo" alt="@item.Name" title="@item.Name" width="150" height="180" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEX6+vqsEtnpAAAACklEQVQI12NgAAAAAgAB4iG8MwAAAABJRU5ErkJggg==" style="border-width:0px;" /></a>
+                                    <a  title="Hải sản cao cấp - @item.Name" href="/san-pham/@item.Url/@item.Id"><img class="lazy" data-original="@item.Logo" alt="@item.Name" title="@item.Name" width="150" height="180" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEX6+vqsEtnpAAAACklEQVQI12NgAAAAAgAB4iG8MwAAAABJRU5ErkJggg==" style="border-width:0px;" /></a>
                                 </div>
                                 <div class="t">
                                     <span>
-                                        <a title="Hoa cao cấp - @item.Name" href="/hoa/@item.Url/@item.Id">@item.Name</a>
+                                        <a title="Hải sản cao cấp - @item.Name" href="/san-pham/@item.Url/@item.Id">@item.Name</a>
                                     </span>
                                     <span class="vn"><em class='oprice'>@Convert.ToDecimal(item.Price).ToString("N0") đ</em><em>@Convert.ToDecimal(item.PriceDiscount).ToString("N0") đ</em></span>
                                 </div>
@@ -64,25 +65,18 @@
         </div>
         <div class="rt">
             <div class="r_nav">
-                <h2 title="Hoa đặc biệt">@Model.Name</h2>
+                <h2 title="Danh mụct">Danh mục</h2>
                 <ul>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplLuxury" title="Hoa cao cấp" href="hoa-cao-cap.html">Hoa cao cấp</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplNormal" title="Hoa sinh viên" href="hoa-sinh-vien.html">Hoa sinh viên</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplSampleNewFlowers" title="Mẫu hoa mới" href="mau-hoa-moi.html">Mẫu hoa mới</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplPromotion" title="Khuyến mãi" href="hoa-khuyen-mai.html">Khuyến mãi</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplVietnameseWomenDay" title="Ngày phụ nữ Việt Nam (20/10)" href="hoa-tuoi-20-10.html">Ngày phụ nữ Việt Nam (20/10)</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplTeacherWomenDay" title="Ngày nhà giáo" href="hoa-tuoi-20-11.html">Ngày nhà giáo</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplTetHoliday" title="Hoa Tết" href="hoa-tet.html">Hoa Tết</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplVietnameseDoctorsDay" title="Ngày thầy thuốc" href="ngay-thay-thuoc.html">Ngày thầy thuốc</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplWomenDay" title="Ngày phụ nữ" href="ngay-phu-nu.html">Ngày phụ nữ</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplEvent" title="Hoa sự kiện" href="hoa-su-kien.html">Hoa sự kiện</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplDanisa" title="Quà tặng Danisa" href="../danisa.html">Quà tặng Danisa</a></strong></li>
+                    @if (categories.Count() > 0)
+                    {
+                        foreach (var item in categories)
+                        {
+                            <li><strong><a title="@item.Name" href="/chuyen-muc/@item.Url/@item.Id">@item.Name</a></strong></li>
+                        }
+                    }
                 </ul>
             </div>
             <div class="t">
-                <div class="order">
-                    <a id="ctl00_cphContent_ucLargeOrder_hplLargeOrder" title="Đặt hoa số lượng lớn" href="../lien-he.html"><img id="ctl00_cphContent_ucLargeOrder_imgLargeOrder" alt="Đặt hoa số lượng lớn" title="Đặt hoa số lượng lớn" src="../../hyt.r.worldssl.net/images/dat-hoa-so-luong-lon.png" style="border-width:0px;" /></a>
-                </div>
                 <div class="discount">
                     <h4>
                         Giảm 20.000đ
@@ -99,7 +93,7 @@
                 </div>
             </div>
             <div class="b">
-                <a id="ctl00_cphContent_ucContact_hplAbout" title="Giới thiệu" href="../gioi-thieu.html">
+                <a id="ctl00_cphContent_ucContact_hplAbout" title="Giới thiệu" href="/gioi-thieu">
                     <div class="contact">
                         <h4>
                             Giới thiệu

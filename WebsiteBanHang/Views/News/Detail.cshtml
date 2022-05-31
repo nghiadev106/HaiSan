@@ -1,0 +1,104 @@
+﻿@model WebsiteBanHang.Data.News
+@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+    var ListRelated = (List<WebsiteBanHang.Data.News>)ViewBag.related;
+}
+<script src="~/js/jquery.easytabs.min.js" type="text/javascript"></script>
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $('div#tabs').easytabs();
+    });
+</script>
+<div id="content">
+    <div class="wrapper">
+        <div class="lf">
+            <ul class="crumbs">
+                <li>
+                    <h3>
+                        <a id="ctl00_cphContent_hplHomepage" title="Trang chủ" href="/">Trang chủ</a>
+                    </h3>
+                </li>
+                <li>
+                    <h2>
+                        <a id="ctl00_cphContent_hplGroup" title="@Model.Name" href="#">@Model.Name</a>
+                    </h2>
+                </li>
+            </ul>
+            <div id="ctl00_cphContent_ucItemDetails_pnlSimilar" class="data_items mt_10">
+                <h2 style="text-align:center;margin-top:20px;">
+                    @Model.Name
+                </h2>
+                <div style="text-align:justify;">
+                    @Html.Raw(Model.Detail)
+                </div>
+            </div>
+
+
+            <div id="ctl00_cphContent_ucItemDetails_pnlSimilar" class="data_items mt_10">
+                <h2>
+                    Tin khác
+                </h2>
+                <input type="hidden" name="ctl00$cphContent$ucItemDetails$ucCategoryItems$hdfMaxResult" id="ctl00_cphContent_ucItemDetails_ucCategoryItems_hdfMaxResult" value="16" />
+                <div class="items">
+                    @foreach (var item in ListRelated)
+                    {
+                        <div class="item">
+                            <div class="i">
+                                <a href="/tin-tuc/@item.Url/@item.Id"><img class="lazy" data-original="@item.Logo" alt="@item.Name" title="@item.Name" width="150" height="180" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEX6+vqsEtnpAAAACklEQVQI12NgAAAAAgAB4iG8MwAAAABJRU5ErkJggg==" style="border-width:0px;" /></a>
+                            </div>
+                            <div class="t">
+                                <span>
+                                    <a title="@item.Name" href="/tin-tuc/@item.Url/@item.Id">@item.Name</a>
+                                </span>
+
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+            <script type='application/ld+json'>{"@@context":"http://schema.org/","@@type":"Product","Name":"Only one","image":["https://hải sảnyeuthuong.com/hinh-hải sản-tuoi/hải sản-sinh-nhat-ba-me/4615_only-one.jpg"],"logo":"https://hải sảnyeuthuong.com/images/logo-hải sản-yeu-thuong.png","url":"https://hải sảnyeuthuong.com/hải sản-sinh-nhat/hải sản-sinh-nhat-ba-me/4615_only-one","description":"Tình yêu là chuyện của hai người, thật hạnh phúc biết bao khi cảm nhận được trọn vẹn tình cảm từ đối phương trao cho mình. “Only one” là bó hải sản đặc biệt, được thiết kế dành tặng riêng cho một và chỉ một người thương duy nhất, thể hiện tình cảm thủy chung bền lâu của người tặng.","productID ":"4615","sku":"4615","mpn":"4615","brand":{"@@type":"Thing","name":"Hoa sinh nhật Ba Mẹ","url":"https://hải sảnyeuthuong.com/hải sản-sinh-nhat/hải sản-sinh-nhat-ba-me.aspx"},"offers":{"@@type":"Offer","url":"https://hải sảnyeuthuong.com/hải sản-sinh-nhat/hải sản-sinh-nhat-ba-me/4615_only-one","priceCurrency":"VND","price":"1450000","priceValidUntil":"2021-08-26","availability":"http://schema.org/InStock","seller":{"@@type":"Organization","name":"Shop hải sản tươi haisan.com","telephone":"+842873002010","email":"contact@hải sảnyeuthuong.com","address":{"@@type":"PostalAddress","addressLocality":"Hồ Chí Minh, Việt Nam","postalCode":"76000","streetAddress":"207F Võ Thị Sáu, phường7, Quận 3"}}}}</script>
+            <script type='application/ld+json'>{"@@context":"https://schema.org","@@type":"BreadcrumbList","itemListElement":[{"@@type":"ListItem","position":1,"name":"Shop hải sản tươi","item":"https://hải sảnyeuthuong.com"},{"@@type":"ListItem","position":2,"name":"Hoa sinh nhật","item":"https://hải sảnyeuthuong.com/hải sản-sinh-nhat.aspx"},{"@@type":"ListItem","position":3,"name":"Hoa sinh nhật Ba Mẹ","item":"https://hải sảnyeuthuong.com/hải sản-sinh-nhat/hải sản-sinh-nhat-ba-me.aspx"},{"@@type":"ListItem","position":4,"name":"Only one","item":"https://hải sảnyeuthuong.com/hải sản-sinh-nhat/hải sản-sinh-nhat-ba-me/4615_only-one"}]}</script>
+            <script>var sessionId = 'yrnu5dpuqttv13kwepwb0tx4';</script>
+            <script type='text/javascript'>var google_tag_params = { "ecomm_prodid": "4615", "ecomm_pagetype": "product", "ecomm_totalvalue": "1450000", "dynx_itemid": "4615", "dynx_itemid2": "4615", "dynx_pagetype": "product", "dynx_totalvalue": "1450000" }; var google_conversion_id = 1013069855; var google_custom_params = window.google_tag_params; var google_remarketing_only = true;</script>
+            <script type="text/javascript" src="https://www.googleadservices.com/pagead/conversion.js"></script>
+            <noscript>
+                <div style="display: inline;">
+                    <img height="1" width="1" style="border-style: none;" alt="" src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1013069855/?value=0&amp;guid=ON&amp;script=0" />
+                </div>
+            </noscript>
+
+        </div>
+            <div class="rt">
+                <div class="t">
+                    <div class="discount">
+                        <h4>
+                            Giảm 20.000đ
+                        </h4>
+                        <span>Nhằm khuyến khích mọi người quen sử dụng website trong việc giao dịch thương mại điện tử, Chúng tôi tặng cho mỗi đơn hàng 20.000đ nều bạn mua hải sản trực tiếp từ webiste.</span>
+                    </div>
+                    <div class="line">
+                    </div>
+                    <div class="satisfaction">
+                        <h4>
+                            100% Hài lòng
+                        </h4>
+                        <span>Với nhiều năm kinh nghiệm phục vụ trong ngành điện hải sản, chúng tôi hiểu mức độ quan trọng trong công việc của mình là truyền tải đúng và đủ thông điệp của người tặng đến người nhận. Vì thế chúng tôi cam kết 100% sự hài lòng của khách hàng với chúng dịch vụ của chúng tôi. Với bất cứ điều gì không hài lòng bạn đều được hoàn lại 100% phí dịch vụ đã chuyển cho chúng tôi.</span>
+                    </div>
+                </div>
+                <div class="b">
+                    <a id="ctl00_cphContent_ucContact_hplAbout" title="Giới thiệu" href="https://hải sảnyeuthuong.com/gioi-thieu.aspx">
+                        <div class="contact">
+                            <h4>
+                                Giới thiệu
+                            </h4>
+                            <span>Với sự đầu tư nghiêm túc, chúng tôi tập trung nâng cao trải nghiệm người dùng (UX) kể cả trên môi trường trực tuyến và ngoại tuyến để đem lại một dịch vụ hoàn hảo xứng đáng trong nỗ lực trở thành công ty điện hải sản số 1 tại Việt Nam.</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="line-b padding_top_20">
+</div>

@@ -4,17 +4,19 @@
 });
 
 function registerEvents() {
-    $('body').on('click', '.btn-plus', function (e) {
-        e.preventDefault();
-        const id = $(this).data('id');
-        const quantity = parseInt($('#txt_quantity_' + id).val()) + 1;
-        updateCart(id, quantity);
-    });
-
+  
     $('body').off('click').on('click', '#removeItem', function (e) {
         e.preventDefault();
         const id = $(this).data('id');
         updateCart(id, 0);
+        location.reload();
+    });
+
+    $('body').on('click', '#btn-update', function (e) {
+        e.preventDefault();
+        const id = $(this).data('id');
+        const quantity = parseInt($('#quantity_' + id).val());
+        updateCart(id, quantity);
         location.reload();
     });
 }
@@ -60,7 +62,7 @@ function loadData() {
                     </div>
                     <div class="cart_in">
                         <h3>
-                            <a title="Hạnh phúc bất tận 2" href="/san-pham/`+ item.Url + `/` + item.productId + `">` + item.name + `</a>
+                            <a title="`+ item.name + `" href="/san-pham/`+ item.Url + `/` + item.productId + `">` + item.name + `</a>
                             <span>
                                 <strong>
                                     Mã SP:
@@ -77,18 +79,8 @@ function loadData() {
                             <span>
                                 Số lượng:
                             </span>
-                            <select id="quantity" data-id="`+ item.productId + `"  onchange="getval(this);">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
+                            <input style="width:50px;" id="quantity_`+ item.productId + `" value="` + item.quantity + `" />       
+                            <button id="btn-update"  data-id="`+ item.productId + `">Lưu</button>
                         </div>
                     </div></div>
                     `;
@@ -102,8 +94,6 @@ function loadData() {
     });
 }
 function getval(sel) {
-    const id = $("#quantity").data('id');
-    const quantity = sel.value;
-    updateCart(id, quantity);
+   
     //location.reload();
 }

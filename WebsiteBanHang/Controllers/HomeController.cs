@@ -48,6 +48,7 @@ namespace WebsiteBanHang.Controllers
                 ListProductCategories=ListProductCategories.OrderByDescending(x => x.PriceDiscount).ToList();
             }
             ViewBag.ListProductCategories = ListProductCategories;
+            ViewBag.categories = _context.Categories.ToList();
             return View(category);
         }
 

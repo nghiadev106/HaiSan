@@ -30,6 +30,7 @@ namespace WebsiteBanHang.Controllers
             var products = await _context.Products.FromSqlRaw(queryString).ToListAsync();
             ViewBag.ListProduct = products;
             ViewBag.keyword = keyword;
+            ViewBag.categories = _context.Categories.ToList();
             return View();
         }
 

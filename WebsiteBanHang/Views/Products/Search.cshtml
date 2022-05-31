@@ -2,6 +2,7 @@
     ViewData["Title"] = "Tìm kiếm";
 
     var ListProduct = (List<WebsiteBanHang.Data.Product>)ViewBag.ListProduct;
+    var categories = (List<WebsiteBanHang.Data.Category>)ViewBag.categories;
 }
 <div id="content">
     <div class="wrapper">
@@ -70,19 +71,15 @@
         </div>
         <div class="rt">
             <div class="r_nav">
-                <h2 title="Hoa đặc biệt"></h2>
+                <h2 title="Danh mụct">Danh mục</h2>
                 <ul>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplLuxury" title="Hoa cao cấp" href="hoa-cao-cap.html">Hoa cao cấp</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplNormal" title="Hoa sinh viên" href="hoa-sinh-vien.html">Hoa sinh viên</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplSampleNewFlowers" title="Mẫu hoa mới" href="mau-hoa-moi.html">Mẫu hoa mới</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplPromotion" title="Khuyến mãi" href="hoa-khuyen-mai.html">Khuyến mãi</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplVietnameseWomenDay" title="Ngày phụ nữ Việt Nam (20/10)" href="hoa-tuoi-20-10.html">Ngày phụ nữ Việt Nam (20/10)</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplTeacherWomenDay" title="Ngày nhà giáo" href="hoa-tuoi-20-11.html">Ngày nhà giáo</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplTetHoliday" title="Hoa Tết" href="hoa-tet.html">Hoa Tết</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplVietnameseDoctorsDay" title="Ngày thầy thuốc" href="ngay-thay-thuoc.html">Ngày thầy thuốc</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplWomenDay" title="Ngày phụ nữ" href="ngay-phu-nu.html">Ngày phụ nữ</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplEvent" title="Hoa sự kiện" href="hoa-su-kien.html">Hoa sự kiện</a></strong></li>
-                    <li><strong><a id="ctl00_cphContent_ucSpecialMenu_hplDanisa" title="Quà tặng Danisa" href="../danisa.html">Quà tặng Danisa</a></strong></li>
+                    @if (categories.Count() > 0)
+                    {
+                        foreach (var item in categories)
+                        {
+                            <li><strong><a title="@item.Name" href="/chuyen-muc/@item.Url/@item.Id">@item.Name</a></strong></li>
+                        }
+                    }
                 </ul>
             </div>
             <div class="t">
